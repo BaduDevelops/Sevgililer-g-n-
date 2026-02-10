@@ -1,0 +1,634 @@
+<!DOCTYPE html>
+<html lang="tr">
+<head>
+<meta charset="UTF-8">
+<title>Nisa 💖</title>
+
+<style>
+.music-control {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 999;
+}
+
+.music-control button {
+  background: linear-gradient(45deg, #ff4d88, #ff85b3);
+  border: none;
+  border-radius: 30px;
+  padding: 12px 20px;
+  font-size: 1rem;
+  color: white;
+  cursor: pointer;
+  box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.music-control button:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 35px rgba(0,0,0,0.4);
+}
+
+
+
+
+.love-buttons {
+  margin-top: 30px;
+  position: relative;
+  height: 120px;
+}
+
+.love-buttons button {
+  padding: 14px 28px;
+  font-size: 1.2rem;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  position: absolute;
+  transition: 0.2s ease;
+}
+
+.yes-btn {
+  background: linear-gradient(45deg, #ff4d88, #ff85b3);
+  color: white;
+  left: 30%;
+}
+
+.no-btn {
+  background: #444;
+  color: white;
+  left: 55%;
+}
+
+
+
+.compliment-btn {
+  background: linear-gradient(45deg, #ff4d88, #ff85b3);
+  border: none;
+  padding: 14px 28px;
+  border-radius: 30px;
+  color: white;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+
+.compliment-btn:hover {
+  transform: scale(1.1);
+  box-shadow: 0 15px 30px rgba(0,0,0,0.3);
+}
+
+.compliment {
+  margin-top: 25px;
+  font-size: 1.3rem;
+  background: rgba(255,255,255,0.25);
+  padding: 20px;
+  border-radius: 20px;
+  animation: popUp 0.8s ease;
+}
+
+.hidden-compliment {
+  display: none;
+}
+
+@keyframes popUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+
+
+
+
+* {
+  box-sizing: border-box;
+  font-family: 'Segoe UI', sans-serif;
+}
+
+body {
+  margin: 0;
+  background: linear-gradient(160deg, #ff6aa2, #ffd6e8);
+  color: white;
+  overflow-x: hidden;
+}
+
+/* HEADER */
+header {
+  height: 100vh;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+}
+
+h1 {
+  font-size: 3.8rem;
+  animation: fadeDown 2s ease;
+}
+
+.subtitle {
+  font-size: 1.3rem;
+  max-width: 650px;
+  opacity: 0.9;
+}
+
+.big-heart {
+  font-size: 4rem;
+  margin-top: 30px;
+  cursor: pointer;
+  transition: transform 0.3s;
+}
+.big-heart:hover {
+  transform: scale(1.5) rotate(15deg);
+}
+
+/* SECTIONS */
+section {
+  padding: 110px 20px;
+  text-align: center;
+}
+
+.hidden {
+  opacity: 0;
+  transform: translateY(60px);
+  transition: 1s ease;
+}
+.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* CARDS */
+.card {
+  max-width: 780px;
+  margin: auto;
+  padding: 45px;
+  border-radius: 25px;
+  background: rgba(255,255,255,0.18);
+  backdrop-filter: blur(12px);
+  transition: 0.5s;
+}
+.card:hover {
+  transform: translateY(-10px) scale(1.03);
+  box-shadow: 0 25px 50px rgba(0,0,0,0.3);
+}
+
+/* SCORE */
+.score {
+  font-size: 4.5rem;
+  font-weight: bold;
+}
+
+/* TAGS */
+.tags span {
+  display: inline-block;
+  margin: 8px;
+  padding: 10px 18px;
+  border-radius: 30px;
+  background: rgba(255,255,255,0.25);
+  cursor: pointer;
+  transition: 0.3s;
+}
+.tags span:hover {
+  background: rgba(255,255,255,0.6);
+  transform: scale(1.15);
+}
+
+/* POEM */
+.poem {
+  font-style: italic;
+  line-height: 1.8;
+  font-size: 1.2rem;
+}
+
+/* GALLERY */
+.gallery {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+  gap: 18px;
+  margin-top: 30px;
+}
+.photo {
+  border-radius: 18px;
+  overflow: hidden;
+  cursor: pointer;
+  transition: 0.4s;
+}
+.photo img {
+  width: 100%;
+  height: 220px;
+  object-fit: cover;
+  transition: transform 0.4s ease;
+}
+.photo:hover img {
+  transform: scale(1.15);
+}
+.photo:hover {
+  transform: translateY(-8px);
+  box-shadow: 0 20px 40px rgba(255,105,180,0.6);
+}
+
+/* FLOATING HEARTS */
+.float-heart {
+  position: fixed;
+  bottom: -30px;
+  font-size: 22px;
+  animation: floatUp 6s linear infinite;
+  opacity: 0.8;
+}
+
+@keyframes floatUp {
+  from { transform: translateY(0); }
+  to { transform: translateY(-120vh); }
+}
+
+@keyframes fadeDown {
+  from { opacity: 0; transform: translateY(-40px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+</style>
+</head>
+
+<body>
+
+
+<header>
+  <h1>Nisa 💕</h1>
+  <p class="subtitle">
+    Yuvarlak gözlüklerinin arkasından bakan  
+    kahverengi gözlerine her baktığımda  
+    dünyam biraz daha güzelleşiyor.
+  </p>
+  <div class="big-heart" onclick="spawnHearts()">❤️</div>
+  <small>(Kalbe tıkla 💘)</small>
+</header>
+<!-- MUSIC PLAYER -->
+<div class="music-control">
+  <button id="musicBtn" onclick="toggleMusic()">🔇 Müzik Aç</button>
+</div>
+
+<audio id="bgMusic" loop>
+  <source src="music.mp3" type="audio/mpeg">
+  Tarayıcın müziği desteklemiyor.
+</audio>
+
+
+<section class="hidden">
+  <div class="card">
+    <h2>💘 Beni Seviyor musun?</h2>
+
+    <div class="love-buttons">
+      <button class="yes-btn" onclick="yesLove()">Evet 💖</button>
+      <button class="no-btn" id="noBtn">Hayır 🙃</button>
+    </div>
+
+    <p id="loveResult" style="margin-top:20px; font-size:1.3rem;"></p>
+  </div>
+</section>
+
+<div style="margin-top:30px;">
+<center>
+  <button class="compliment-btn" onclick="showCompliment()">
+     👉🏿 💌 👈🏿
+  </button>
+
+  <div id="complimentBox" class="compliment hidden-compliment"></div>
+  </center>
+</div>
+
+<section class="hidden">
+  <div class="card">
+    <h2>💞 Uyumluluğumuz</h2>
+    <div class="score" id="score">0%</div>
+    <p>Bu sevgi matematiğe sığmıyor.</p>
+  </div>
+</section>
+
+<section class="hidden">
+  <div class="card">
+    <h2>✨ Nisa’nın Güzelliği</h2>
+    <div class="tags">
+      <span>Işıltılı Güzel Saçları 💖</span>
+      <span>Bana Bakan Tatlı Tatlı Gözleri 💕</span>
+      <span>Süt Beyazı Teni 😘</span>
+      <span>Tokanı Her Kokladığımda Gelen Büyülü Bir Hissi 😍</span>
+      <span>Cenneten Düşmüş Gibi Olan Güzelliği</span>
+      <span>Kalbimi Eriten Gülüşü 💘</span>
+    </div>
+  </div>
+</section>
+
+<section class="hidden">
+  <div class="card">
+    <h2>💗 Kişiliğin</h2>
+    <div class="tags">
+      <span>Gülmekten Karnımı Ağırtığın Komikliğin 🤣</span>
+      <span>Şevkatli İyi Niyetin 🥰</span>
+      <span>Çiçek Gibi Masumluğun(Tamda masum değil ama 😉</span>
+      <span>Ara Sıra Gelen Sinir Patlamaların... Bayılıyorum Sana</span>
+      <span>Kalp Nabzımı Uçuran İltifatların(AZIYORUM 🤤</span>
+      <span>Saatlerce benle vakit geçirip bana ilgi vermen 💖💘❤️</span>
+    </div>
+    <p>Sen sevmenin en güzel halisin.</p>
+  </div>
+</section>
+
+
+
+
+<section class="card">
+  <h2>💌 Nisa'ma Bir Şiir</h2>
+  
+  <div class="poem">
+    <p>Gözlerin bir gece yıldızından daha parlak,
+Ve ben her bakışında kaybolurum,
+Seninle başlar günüm, seninle biter,
+Adını her an içimde fısıldarım.</p>
+    
+
+    <p>Ellerin ellerime değdiğinde,
+Zaman durur sanki,
+Dünya bir anlığına sessizleşir,
+Ve kalbim sadece senin ritmini duyar.</p>
+    
+
+    <p>Sen gülümsediğinde,
+Karanlıklar bile aydınlanır,
+Ve ben her gülüşünde
+Yeni bir evren keşfederim.</p>
+    
+
+    <p>Sana yazdığım her kelime,
+Rüzgarda savrulan bir yaprak gibi
+Kalbimin derinliklerinden gelir,
+Ve sana ulaşana kadar yolunu arar.</p>
+    
+
+    <p>Sevgin, içimde bir deniz gibi,
+Bazen sakin, bazen fırtınalı,
+Ama hep hayat verici,
+Ve ben bu denizde kaybolmayı seçiyorum.</p>
+   
+
+    <p>Birlikte geçen anlar,
+Küçük ama sonsuz birer hazine,
+Seninle geçen her saniye,
+Bir ömürden daha değerli.</p>
+    
+
+    <p>Ve bil ki sevgilim,
+Ne zaman yanımda olmasan da,
+Kalbim hep seninle,
+Ruhum hep senin melodinde.</p>
+    
+
+    <p>Sen benim en güzel düşüm,
+En derin gerçeğim,
+Ve her nefeste seni sevmek,
+Hayatın bana verdiği en büyük armağan.</p>
+    
+  </div>
+</section>
+
+
+<section class="hidden">
+  <div class="card">
+    <h2>📸 Anılarımız</h2>
+    <p>Her kare, kalbimde ayrı bir yer.</p>
+    <div class="gallery">
+      <div class="photo" onclick="photoLove()"><img src="photo1.jpg"></div>
+      <div class="photo" onclick="photoLove()"><img src="photo2.jpg"></div>
+      <div class="photo" onclick="photoLove()"><img src="photo3.jpg"></div>
+      <div class="photo" onclick="photoLove()"><img src="photo4.jpg"></div>
+      <div class="photo" onclick="photoLove()"><img src="photo5.jpg"></div>
+      <div class="photo" onclick="photoLove()"><img src="photo6.jpg"></div>
+    </div>
+    <small>✨ Fotoğraflara dokun</small>
+  </div>
+</section>
+
+<section class="hidden">
+    <div class="card">
+      <h2>⏳ Beraber Geçirdiğimiz Zaman</h2>
+      <h3>Seninle bu tarihten itibaren beraber olduğumuz zaman:</h3>
+      <h1 id="togetherTime" style="font-size:1.3rem; line-height:1.6;"></h1>
+    </div>
+  </section>
+  
+
+<section class="hidden">
+  <h2>🌹 Nisa</h2>
+  <p>
+    Seni her halinle,<br>
+    her gün biraz daha çok seviyorum.<br><br>
+    Bu sayfa biter,<br>
+    sevgim bitmez.
+  </p>
+</section>
+
+<script>
+/* Scroll reveal */
+const hidden = document.querySelectorAll('.hidden');
+window.addEventListener('scroll', () => {
+  hidden.forEach(el => {
+    if (el.getBoundingClientRect().top < window.innerHeight - 100) {
+      el.classList.add('show');
+    }
+  });
+});
+
+/* Score */
+const score = document.getElementById("score");
+let scoreAnimated = false; // animasyon sadece bir kere başlasın
+
+window.addEventListener("scroll", () => {
+  // Score section sayfada görünür mü kontrol et
+  const scoreSection = score.parentElement.parentElement; // section.card
+  const rect = scoreSection.getBoundingClientRect();
+
+  if (!scoreAnimated && rect.top < window.innerHeight - 100) {
+    scoreAnimated = true;
+
+    let s = 0;
+    const timer = setInterval(() => {
+      s += 40; // artış hızı
+      if (s > 4444) { 
+        score.textContent = "4444% 💖"; 
+        clearInterval(timer);
+      } else {
+        score.textContent = s + "%";
+      }
+    }, 40);
+  }
+});
+
+
+/* Hearts */
+function spawnHearts() {
+  for (let i = 0; i < 20; i++) createHeart("❤️");
+}
+function photoLove() {
+  for (let i = 0; i < 8; i++) createHeart("💗");
+}
+function createHeart(symbol) {
+  const h = document.createElement("div");
+  h.className = "float-heart";
+  h.innerHTML = symbol;
+  h.style.left = Math.random() * 100 + "vw";
+  h.style.animationDuration = (4 + Math.random() * 4) + "s";
+  document.body.appendChild(h);
+  setTimeout(() => h.remove(), 7000);
+}
+</script>
+<script>
+const compliments = [
+  "Askimmmmmm 💘",
+  "Balımmmmmm 🐝",
+  "Yozgat Mankenim 💗",
+  "Gelecekteki Karım 💍",
+  "Yavrummm ❤️‍🔥",
+  "Canımcığımmmmmm 💝",
+  "Yaşam Sebebimmmmmm 💞",
+  "4444km yarranı yediğim 😝😝😝",
+  "Hayatımmmmmm 💟",
+  "Dünya Güzelim. ❤️"
+];
+
+function showCompliment() {
+  const box = document.getElementById("complimentBox");
+  const random = compliments[Math.floor(Math.random() * compliments.length)];
+  
+  box.textContent = random;
+  box.classList.remove("hidden-compliment");
+  box.classList.add("compliment");
+
+  // ekstra tatlılık: kalpler
+  for (let i = 0; i < 6; i++) createHeart("💖");
+}
+</script>
+
+<script>
+const noBtn = document.getElementById("noBtn");
+const parent = noBtn.parentElement;
+
+// Parent konumlandırılmış olmalı
+parent.style.position = "relative";
+noBtn.style.position = "absolute";
+
+parent.addEventListener("mousemove", (e) => {
+  const mouseX = e.clientX - parent.getBoundingClientRect().left;
+  const mouseY = e.clientY - parent.getBoundingClientRect().top;
+
+  const btnRect = noBtn.getBoundingClientRect();
+  const btnX = btnRect.left - parent.getBoundingClientRect().left;
+  const btnY = btnRect.top - parent.getBoundingClientRect().top;
+  const btnWidth = btnRect.width;
+  const btnHeight = btnRect.height;
+
+  const btnCenterX = btnX + btnWidth / 2;
+  const btnCenterY = btnY + btnHeight / 2;
+
+  const distance = Math.hypot(mouseX - btnCenterX, mouseY - btnCenterY);
+
+  if (distance < 150) { // fare butona yaklaşınca
+    // Rastgele bir köşe seç: "top-left", "top-right", "bottom-left", "bottom-right"
+    const corners = ["top-left", "top-right", "bottom-left", "bottom-right"];
+    const corner = corners[Math.floor(Math.random() * corners.length)];
+
+    let newX = 0;
+    let newY = 0;
+
+    switch(corner) {
+      case "top-left":
+        newX = 0;
+        newY = 0;
+        break;
+      case "top-right":
+        newX = parent.clientWidth - btnWidth;
+        newY = 0;
+        break;
+      case "bottom-left":
+        newX = 0;
+        newY = parent.clientHeight - btnHeight;
+        break;
+      case "bottom-right":
+        newX = parent.clientWidth - btnWidth;
+        newY = parent.clientHeight - btnHeight;
+        break;
+    }
+
+    // Hızlı hareket için transition
+    noBtn.style.transition = "left 0.05s, top 0.05s";
+    noBtn.style.left = newX + "px";
+    noBtn.style.top = newY + "px";
+  }
+});
+
+// Tıklamayı garantiyle engelle
+noBtn.addEventListener("click", (e) => {
+  e.preventDefault();
+  e.stopPropagation();
+});
+
+</script>
+
+<script>
+const music = document.getElementById("bgMusic");
+const musicBtn = document.getElementById("musicBtn");
+
+function toggleMusic() {
+  if (music.paused) {
+    music.play();
+    musicBtn.textContent = "🔊 Müzik Kapat";
+    for (let i = 0; i < 6; i++) createHeart("🎵");
+  } else {
+    music.pause();
+    musicBtn.textContent = "🔇 Müzik Aç";
+  }
+}
+
+</script>
+
+<script>
+    function updateTogetherTime() {
+  const startDate = new Date("2025-10-30T00:00:00"); // birlikte olduğunuz tarih
+  const now = new Date();
+
+  let diff = now - startDate; // milisaniye cinsinden fark
+
+  const years = Math.floor(diff / (1000 * 60 * 60 * 24 * 365));
+  diff -= years * (1000 * 60 * 60 * 24 * 365);
+
+  const months = Math.floor(diff / (1000 * 60 * 60 * 24 * 30));
+  diff -= months * (1000 * 60 * 60 * 24 * 30);
+
+  const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+  diff -= days * (1000 * 60 * 60 * 24);
+
+  const hours = Math.floor(diff / (1000 * 60 * 60));
+  diff -= hours * (1000 * 60 * 60);
+
+  const minutes = Math.floor(diff / (1000 * 60));
+  diff -= minutes * (1000 * 60);
+
+  const seconds = Math.floor(diff / 1000);
+
+  document.getElementById("togetherTime").textContent =
+    `
+    ${years} yıl, ${months} ay, ${days} gün, ${hours} saat, ${minutes} dakika, ${seconds} saniye 💖`;
+}
+
+// her saniye güncelle
+setInterval(updateTogetherTime, 1000);
+updateTogetherTime(); // sayfa yüklendiğinde hemen göster
+
+</script>
+</body>
+</html>
